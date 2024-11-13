@@ -1,6 +1,3 @@
 namespace Todolist.Models;
 
-public class TodolistRequest
-{
-    
-}
+public record TodolistRequest(string title, string text);
