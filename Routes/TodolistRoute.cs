@@ -35,7 +35,19 @@ public static class TodolistRoute{
 
             return Results.Ok(todo);
         });
-        
+
+        route.MapDelete("/done/{id:guid}", async (Guid id, TodolistContext context) =>
+        {
+            var todo = await context.Todo.FirstOrDefaultAsync(x => x.Id == id);
+            if (todo == null)
+                return Results.NotFound();
+
+            todo.ChangeStatus();
+            await context.SaveChangesAsync();
+
+            return Results.Ok(todo);
+        });
+
         route.MapDelete("{id:guid}", async (Guid id, TodolistContext context) =>{
             var todo = await context.Todo.FirstOrDefaultAsync(x => x.Id == id);
 
