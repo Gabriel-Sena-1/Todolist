@@ -14,7 +14,7 @@ public class TodolistModel{
     public String Title{get; private set;} = String.Empty;
 
     public String Text{get; private set;} = String.Empty;
-    public String Status{get; private set;} = "ativo";
+    public String Status{get; private set;} = "em andamento";
 
     public void ChangeTitle(string title)
     {
@@ -28,7 +28,7 @@ public class TodolistModel{
     
     public void ChangeStatus()
     {
-        Status = "feito";
+        Status = "concluido";
     }
 
     
